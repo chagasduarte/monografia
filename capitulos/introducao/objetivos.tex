@@ -1,0 +1,30 @@
+% RASCUNHO PRELIMINAR redigido com apoio de IA (Claude Code, Anthropic; ver ficha de uso de IA).
+% A interpretação é uma proposta de leitura dos dados e deve ser revisada, validada e reescrita pelo autor.
+\section{Objetivos}
+
+Considerando o problema apresentado, este trabalho busca analisar diferentes algoritmos de fatiamento de redes em cenários de demanda elástica, de forma a compreender suas características e diferenças de desempenho.
+
+\subsection{Objetivo Geral}
+
+Este trabalho tem como objetivo geral implementar um simulador reprodutível de alocação de fatias e comparar o PETIC, o ACO, o Q-Learning e o SA em diferentes topologias e níveis de demanda, caracterizando as diferenças observadas sem presumir superioridade por aceitação.
+
+\subsection{Objetivos Específicos}
+
+\begin{itemize}
+    \item analisar o comportamento dos algoritmos de fatiamento selecionados diante de diferentes condições de demanda;
+    
+    \item comparar o desempenho dos algoritmos a partir dos resultados obtidos nos experimentos;
+    
+    \item identificar as características, vantagens e limitações apresentadas por cada abordagem nos cenários avaliados;
+    
+    \item disponibilizar a configuração, os dados de execução e os scripts de análise para reprodução dos resultados.
+\end{itemize}
+
+\subsection{Contribuições Científicas e Delimitação}
+
+A contribuição científica deste trabalho não consiste na proposição de um novo algoritmo ou protocolo de alocação de fatias de rede, mas na condução de uma avaliação comparativa empírica e reprodutível de quatro implementações completas (o algoritmo determinístico PETIC, as meta-heurísticas ACO e SA, e o algoritmo de aprendizado por reforço Q-Learning) sob demandas pareadas e com controle experimental sistemático.
+
+Essa investigação diferencia-se dos trabalhos relacionados na literatura (discutidos na Seção~2.7), que tratam do escalonamento autonômico de réplicas de servidores \cite{pasin2013infaestrutura}, de arquiteturas de gerenciamento e orquestração de fatias \cite{maciel2020gerenciamento}, da alocação de blocos de recursos em redes de acesso 5G Open RAN \cite{limafilho2026controle} ou avaliam políticas de fatiamento elástico sob um único cenário sintético sem delineamento em blocos casualizados \cite{gomes2020strategies}. Em contrapartida, este estudo concentra-se especificamente na seleção e adaptação de caminhos em topologias de transporte em malha com 30 cenários sintéticos independentes por célula e testes estatísticos pareados.
+
+A infraestrutura completa de experimentação — abrangendo o código-fonte do simulador, as sementes, as configurações, os dados brutos e os scripts de análise e visualização — é disponibilizada publicamente em repositório aberto\footnote{Disponível em: \url{https://github.com/chagasduarte/elastic-network-slicing}.}% VERIFICAR: o autor deve confirmar a data de acesso.
+. As conclusões apresentadas delimitam-se estritamente às quatro implementações analisadas e às condições experimentais avaliadas, sem pretensão de extrapolação além dos algoritmos e cenários investigados.

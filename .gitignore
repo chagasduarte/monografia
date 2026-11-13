@@ -1,0 +1,56 @@
+# Arquivos auxiliares da compilação LaTeX
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.out
+*.loa
+*.lol
+*.fls
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
+*.synctex(busy)
+*.synctex.gz(busy)
+*.dvi
+*.xdv
+
+# Bibliografia (BibTeX e Biber)
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+
+# Índices, glossários e listas de siglas
+*.idx
+*.ind
+*.ilg
+*.glo
+*.gls
+*.glg
+*.glsdefs
+*.acn
+*.acr
+*.alg
+*.ist
+
+# Apresentações Beamer
+*.nav
+*.snm
+*.vrb
+
+# Diretórios de compilação
+/build/
+/out/
+/_minted-*/
+
+# PDF gerado; PDFs de anexos e figuras continuam versionáveis
+/monografia.pdf
+
+# Arquivos locais do sistema e backups de editores
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
