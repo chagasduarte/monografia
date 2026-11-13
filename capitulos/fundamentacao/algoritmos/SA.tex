@@ -1,0 +1,17 @@
+\subsection{Simulated Annealing (SA)}
+
+O Simulated Annealing (SA) é uma técnica de otimização inspirada no processo físico de recozimento de materiais, onde um material é submetido a uma temperatura alta e posteriormente resfriado de forma gradual. Em temperaturas elevadas, a maior agitação térmica permite que os átomos se arranjem em configurações que temporariamente geram mais energia. Enquanto perde temperatura, essas transições tornam-se menos prováveis, estabilizando o sistema em configurações menos energéticas. Baseado nisso, \citeonline{kirkpatrick1983optimization} conseguiram criar uma analogia entre esse processo e problemas de otimização. 
+
+Em processos de otimização, o SA funciona a partir da geração de soluções vizinhas com base em uma configuração atual. Quando uma solução apresenta um resultado melhor, ela é aceita como solução atual. Mas diferente de uma solução gulosa, que só aceita soluções melhores que a atual, o SA também permite, de forma probabilística, a aceitação temporária de soluções de maior custo. Essa característica deriva do procedimento de Metropolis, no qual uma alteração desfavorável pode ser aceita segundo uma probabilidade que diminui em função da magnitude da piora e da temperatura atual do sistema \cite{kirkpatrick1983optimization}.
+
+De uma forma mais simples, considerando uma variação de custo \(\Delta\) e uma temperatura \(T\), a probabilidade de aceitação de uma solução de maior custo pode ser expressa por:
+\[
+P = e^{-\Delta/T}
+\]
+Assim, quando está mais quente, o algoritmo se mostra mais propenso a aceitar soluções temporariamente piores, fazendo com que seja possível explorar diferentes regiões do espaço em busca de resultados melhores. De acordo com a redução da temperatura, essa probabilidade diminui, deixando o processo progressivamente mais seletivo e direcionado ao refinamento das soluções encontradas. A possibilidade de aceitar temporariamente soluções de maior custo é uma das principais características do SA, pois reduz a tendência da busca permanecer restrita a ótimos locais. 
+
+\citeonline{kirkpatrick1983optimization} demonstram a aplicabilidade da abordagem em diferentes problemas combinatórios, incluindo particionamento, posicionamento de componentes eletrônicos e roteamento das conexões entre eles, além do problema do caixeiro-viajante. \citeonline{de2021slice} empregam a técnica em um cenário de \textit{network slicing} 5G com o objetivo de reduzir o orçamento de potência da Rede de Acesso por Rádio, considerando requisitos distintos de capacidade, latência e confiabilidade das fatias. Esse emprego do SA em um problema de otimização de recursos associado ao network slicing evidencia a possibilidade de adaptação da meta-heurística a diferentes representações de solução e funções objetivo, desde que sejam definidos adequadamente os movimentos de vizinhança e as restrições do problema.
+
+
+
+

@@ -1,0 +1,25 @@
+\subsection{Q-Learning} O Q-Learning é uma das abordagens mais difundidas de Aprendizado por Reforço (\textit{Reinforcement Learning} -- RL) livre de modelo (model-free), onde o conhecimento adquirido pelo agente é estruturado na chamada tabela Q (Q-Table). Essa estrutura de dados armazena os valores Q($s$,$a$), conhecidos como valores ação-estado (quality values). Cada linha da tabela representa um estado $s$ possível do ambiente, enquanto cada coluna corresponde a uma ação $a$ que o agente pode tomar. O valor armazenado na célula ($s$, $a$) mensura a utilidade ou a expectativa de recompensa futura acumulada ao escolher a ação $a$ estando no estado $s$ e, a partir do estado resultante, seguir uma política ótima.
+
+Com uma probabilidade $\epsilon$, o algoritmo escolhe uma ação de forma aleatória. Isso permite que o agente conheça novas regiões do espaço de estados e descubra caminhos potencialmente melhores que ainda não foram testados. Para decidir entre testar uma ação inedita ou utilizar uma ação cujo retorno já é conhecido, o algoritmo implementa estratégias de balanço entre exploração (\textit{exploration}) e explotação (\textit{exploitation}). A abordagem mais comum é a política $\epsilon$-gulosa (\textit{$\epsilon$-greedy}). A regra de atualização apresentada a seguir foi proposta por \citeonline{watkins1992q}.
+
+No paradigma de Aprendizagem por Reforço (\textit{Reinforcement Learning} -- RL), o processo de tomada de decisão é classicamente modelado pela interação contínua entre um agente inteligente e o ambiente dinâmico. A cada ciclo de decisão, a partir de um estado corrente $s \in \mathcal{S}$, o agente executa uma ação $a \in \mathcal{A}$, transita para um novo estado $s' \in \mathcal{S}$ e recebe como resposta um sinal escalar de reforço ou recompensa imediata $r \in \mathbb{R}$. 
+
+Com base nessa experiência de transição, a função de ação-valor é refinada iterativamente na estrutura tabular de conhecimento (\textit{Q-table}) por meio da regra de atualização do algoritmo \textit{Q-learning}, expressa pela Equação~\eqref{eq:qlearning_geral}:
+
+\begin{equation}
+    Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a' \in \mathcal{A}} Q(s', a') - Q(s, a) \right]
+    \label{eq:qlearning_geral}
+\end{equation}
+
+\noindent Em que os termos e hiperparâmetros são definidos como:
+\begin{itemize}
+    \item $Q(s, a)$: estimativa do valor esperado do retorno cumulativo ao adotar a ação $a$ estando no estado $s$;
+    \item $\alpha \in (0, 1]$: a \textbf{taxa de aprendizado} (\textit{learning rate}), responsável por ponderar o impacto das informações recém-adquiridas frente ao conhecimento acumulado historicamente;
+    \item $r$: o reforço imediato obtido após a transição do estado $s$ para $s'$;
+    \item $\gamma \in [0, 1]$: o \textbf{fator de desconto} (\textit{discount factor}), que calibra a relevância das recompensas futuras esperadas em relação ao benefício imediato;
+    \item $\max_{a' \in \mathcal{A}} Q(s', a')$: a estimativa do valor ótimo da função de ação-valor avaliada a partir do estado subsequente $s'$.
+\end{itemize}
+
+No domínio de redes de computadores, o Q-Learning pode ser empregado para que o agente aprenda, por meio de tentativa e erro, as ações que proporcionam o melhor desempenho frente às dinâmicas observadas no ambiente. Ao modelar o problema de alocação de recursos como um Processo de Decisão de Markov (MDP), o estado $s$, o conjunto de ações $a$ e a função de recompensa $r$ precisam ser definidos de acordo com o problema. A literatura apresenta diferentes escolhas: por exemplo, \citeonline{kim2019reinforcement} utilizam o Q-Learning tabular para o ajuste dinâmico dos recursos adquiridos por um inquilino (\textit{tenant}) em um cenário de fatiamento com tráfego elástico e inelástico, adotando como estado a proporção de fluxos inelásticos, a demanda de banda, a razão entre os preços de compra e venda e a zona de tempo, e como recompensa o lucro do inquilino penalizado pela violação de requisitos de qualidade de serviço.
+
+Neste trabalho, o problema de encontrar o caminho que compõe uma fatia é modelado de forma distinta, como descrito no Capítulo~\ref{chp:metodologia}: o estado é o nó em que o agente se encontra, cada ação corresponde à escolha de um nó vizinho alcançável por um enlace com banda suficiente, e a recompensa é o negativo do custo do enlace percorrido. Essa modelagem é própria deste trabalho, e não decorre das propostas citadas. O Q-Learning é, assim, utilizado como um buscador de caminhos treinado a cada alocação, em vez de um agente que acumula aprendizado entre períodos.

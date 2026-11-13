@@ -1,0 +1,9 @@
+\section{Abordagens para Alocação de Fatias}
+
+Diferentes estratégias podem ser utilizadas para realizar o fatiamento e adaptar a utilização dos recursos às condições apresentadas pela rede. Essas estratégias podem adotar diferentes critérios para definir as fatias, resultando em comportamentos distintos quanto à utilização dos recursos disponíveis. Nesse contexto, \citeonline{gomes2020strategies} apresentam quatro estratégias gulosas e determinísticas para realizar o fatiamento considerando as variações da demanda ao longo do dia: o \textit{Per Time Calculation} (PETIC), o \textit{Previous Slice Reuse} (PSR), o \textit{Slice Encourage} (SE) e o \textit{Comparing Slices Saturation} (CSS). Este trabalho toma o PETIC como estratégia de referência e o compara a três implementações de famílias de métodos distintas, que não constam entre as estratégias desse artigo: a meta-heurística populacional \textit{Ant Colony Optimization} (ACO), a meta-heurística de trajetória \textit{Simulated Annealing} (SA) e o aprendizado por reforço com \textit{Q-Learning}. As quatro abordagens são descritas a seguir.
+
+\input{capitulos/fundamentacao/algoritmos/PETIC}
+\input{capitulos/fundamentacao/algoritmos/ACO}
+\input{capitulos/fundamentacao/algoritmos/SA}
+\input{capitulos/fundamentacao/algoritmos/Q-Learning}
+\input{capitulos/fundamentacao/trabalhos_relacionados}
