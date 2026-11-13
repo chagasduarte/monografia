@@ -1,0 +1,33 @@
+\chapter{Citações}\label{chp:citacoes}
+
+    Citação é a utilização, no texto que estamos produzindo, de partes de outros trabalhos ou de ideias de outros autores, de preferência reconhecidos como autoridades no assunto tratado. Faz-se a citação para esclarecer algum aspecto particular do tema ou para reforçar um argumento nosso como o ponto de vista do outro autor.
+
+    Existem três tipos de citação:
+
+    \begin{alineas}
+        \item \textbf{Direta:} transposição literal de um texto de outro autor, no todo ou em parte.
+        \item \textbf{Indireta:} apresentação do conteúdo de um trecho de outro autor, sem transcrição literal.
+        \item \textbf{Citação de citação:} citação direta ou indireta de outro autor ao qual não se teve acesso ao original, mas sim através de outra citação.
+    \end{alineas}
+
+    A citação direta pode ser curta ou longa. Ela é considerada cursa se no texto original tiver até 3 linhas. Caso contrário, ela é considerada longa. A citação direta curta deve ser feita no próprio texto, entre aspas. Já a longa deve ser feita sem aspas (a menos que estas já façam parte do texto original). com recuo de $4cm$ a partir da margem esquerda, letra menor que a utilizada no texto e espaçamento simples. Para isso, basta utilizar o ambiente \verb| citacao |.
+
+    O exemplo a seguir é uma citação direta curta, cuja informação está na página $2$ do Livro ``Graph Theory'' de Bundy e Murty.
+
+    Segundo \citeonline[p. 2]{BondyMurty}, ``\emph{grafos} são assim chamados por poderem ser representados graficamente, e é essa representação gráfica que nos ajuda a compreender muitas de suas propriedades''.
+
+    Em vez do comando \verb| \citeonline |, poderíamos ter utilizado o comando \verb| \cite |. O resultado ficaria assim:
+
+    Segundo \cite[p. 2]{BondyMurty}, ``\emph{grafos} são assim chamados por poderem ser representados graficamente, e é essa representação gráfica que nos ajuda a compreender muitas de suas propriedades.''
+
+    A seguir temos um exemplo de citação direta longa, utilizando como referência os mesmos autores anteriores.
+  
+    \begin{citacao}
+        Um \emph{grafo} $G$ é um par ordenado $(V(G),E(G))$ consistindo de um conjunto $V(G)$ de vértices e um conjunto $E(G)$ de arestas, disjunto de $V(G)$, juntamente com uma função de incidência $\psi_G$ que associa um par (não ordenado) de vértices a cada aresta de $G$. Se $e$ é uma aresta, e $u$ e $v$ são os vértices tais que $\psi_G(e) = \{u,v\}$, $u$ e $v$ são as extremidades de $e$. \cite[p.2]{BondyMurty}
+    \end{citacao}
+
+    Caso se deseje suprimir partes de uma citação, isso deve ser feito utilizando sinal de reticências entre colchetes. Por Exemplo:
+
+    Por fim, a citação de citação é quando se faz uma citação que já foi feita por outro autor. Por exemplo: Segundo \apudonline[p. 10]{HavetASD}{BondyMurty}, ``Não há uma única maneira correta de se desenhar um grafo''.
+
+    A citação acima poderia ter sido feita também utilizando o comando \verb| \apud |. O que se deseja dizer é que a citação foi feita por Havet e isso consta na página 10 do livro de Bondy e Murty. Esta citação especificamente não foi feita na obra indicada. O exemplo está aqui apenas para ilustração.

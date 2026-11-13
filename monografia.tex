@@ -1,0 +1,86 @@
+\documentclass[12pt, sumario=abnt-6027-2012, openright, oneside, a4paper, english, brazil, chapter=TITLE, section=TITLE]{abntex2}
+\RequirePackage{uva}
+
+% Informações do Curso
+\instituicao{Universidade Estadual Vale do Acaraú - UVA}
+\centro{Centro de Ciências Exatas e Tecnologia - CCET}
+\curso{Curso de Ciências da Computação}
+\coordenador[Coordenador do Curso]{Nome do Coordenador}
+
+% Informações do Trabalho
+\autor{Nome do autor}
+\titulo{Título do trabalho}
+\subtitulo{Subtítulo, se houver} % Se não houver subtítulo, deixar vazio
+\tipotrabalho{Monografia}
+\grau{Bacharel em Ciências da Computação} % Ex.: Bacharel em Ciências da Computação
+
+% Orientadores (No caso de Orientadora, ou Coorientadora, alterar os nomes entre colchetes
+\orientador[Orientador:]{Nome do orientador}
+\coorientador[Coorientador:]{Nome do coorientador} % Se não houver, deixar o conteúdo entre chaves vazio
+
+% Banca Avaliadora - Caso a banca seja formada apenas por três avaliadores, incluindo o orientador, deixar as
+% informações referentes à bancac vazias. \bancac{}{}
+\bancao{\imprimirorientador}{UVA}
+\bancaa{Nome do 1o. avaliador, Titulo}{Instituição 01}
+\bancab{Nome do 2o. avaliador, Titulo}{Instituição 02}
+\bancac{Nome do 3o. avaliador, Titulo}{Instituição 03} 
+
+% Local e Ano
+\local{Sobral}
+\data{Ano}
+
+% Palavras-chave - Preencher as que forem necessárias {Português}{Língua estrangeira}. Deixar as outras vazias
+\pca{Palavra1}{Word1}
+\pcb{Palavra2}{Word2}
+\pcc{Palavra3}{Word3}
+\pcd{Palavra4}{Word4}
+\pce{Palavra5}{Word5}
+\pcf{}{}
+
+\pgfplotsset{compat=1.16}
+
+\makeindex
+
+\begin{document}
+    \pretextual
+        \imprimircapa
+        \imprimirfolhaderosto
+        \imprimirfolhaaprov
+        \imprimirdedicatoria{Escreva aqui a sua dedicatória ... }
+        \imprimiragradecimentos % arquivo capitulos/agradecimentos.tex
+        \imprimirepigrafe{Escreva aqui uma frase, de preferência relacionada ao seu trabalho, indicando o autor.}{Autor}
+        \imprimirresumolv % Resumo em lingua vernácula: arquivo capitulos/resumolv.tex
+        \imprimirresumole{english}{Abstract}{Keywords} % Resumo em língua estrangeira - arquivo capitulos/resumole.tex
+
+        \listadefiguras     % ambiente figure*
+        \listadegraficos    % ambiente graphic
+        \listadequadros     % ambiente board
+        \listadetabelas     % ambiente table*
+        %\listadealgoritmos  % ambiente algorithm
+        \listadesiglas       % arquivo capitulos/siglas.tex
+        \listadesimbolos     % arquivo capitulos/simbolos.tex
+        \imprimirsumario
+
+    \textual
+        % criar um arquivo para cada um dos outros capítulos, e inserir nos moldes a seguir
+        \include{capitulos/introducao}
+        \include{capitulos/citacoes}
+        \include{capitulos/figuras}
+        \include{capitulos/graficos}
+        \include{capitulos/tabelas}
+
+    \postextual
+        \makeatother
+        \bibliography{referencias}
+
+        %\apendices % Referenciar com \refapd
+            %\chapter{Nome do apêndice}\label{apd:nome}
+            %\includepdf{apendices/apendice.pdf}
+
+        %\anexos % Referenciar com \refanx
+            %\chapter{Nome do anexo}\label{anx:nome}
+            %\includepdf{anexos/anexo.pdf}
+
+        % Use os comandos \idxitem{item} e \idxsubitem{subitem}{item} no texto, para criar um índice remissivo
+        \printindex
+\end{document}

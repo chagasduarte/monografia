@@ -1,0 +1,127 @@
+\chapter{Gráficos}\label{chp:graficos}
+
+    O \cref{grf:distidadeingr} a seguir traz a distribuição dos alunos ingressantes no Curso de Ciências da Computação por faixa etária.
+
+    \begin{graphic}[htb]
+        \caption{Barras}
+        \label{grf:distidadeingr}
+        \centering
+        \begin{tikzpicture}
+            \tiny
+            \begin{axis}[
+                %title = {Distribuição dos Alunos por Faixa Etária},
+                %xlabel = {Períodos letivos},
+                ylabel = {Qtd. de alunos},
+                font =\footnotesize,
+                width = 10cm,
+                height = 4.9cm,
+                ybar =2*\pgflinewidth,
+                bar width=8pt,
+                ymajorgrids = true,
+                symbolic x coords={$2013.1$,$2013.2$,$2014.1$,$2014.2$},
+                xtick = data,
+                ymin=0,
+                ymax=50,
+                enlarge x limits=0.25,
+                legend cell align=left,
+                legend image code/.code={\draw[#1] (0cm,-0.1cm) rectangle (0.2cm,0.1cm); },
+                legend style={legend pos=outer north east, column sep=1ex}
+                %legend style={at={(1.0,1.15)}, anchor=north,legend columns=-1}
+            ]
+    
+                \addplot[style={cl00,fill=cl01}] coordinates {($2013.1$, 27) ($2013.2$, 30) ($2014.1$, 35) ($2014.2$, 44)};
+                \addplot[style={cl00,fill=cl02}] coordinates {($2013.1$, 11) ($2013.2$,  8) ($2014.1$,  5) ($2014.2$,  6)};
+                \addplot[style={cl00,fill=cl03}] coordinates {($2013.1$,  0) ($2013.2$,  0) ($2014.1$,  0) ($2014.2$,  1)};
+                \addplot[style={cl00,fill=cl04}] coordinates {($2013.1$,  0) ($2013.2$,  1) ($2014.1$,  0) ($2014.2$,  0)};
+    
+                \legend{$16$ a $20$ anos, $21$ a $25$ anos, $26$ a $30$ anos, Acima de $30$ anos}
+            \end{axis}
+        \end{tikzpicture}
+        \fonte{Autoria própria}
+    \end{graphic}
+
+    O \cref{grf:distidadematr} a seguir traz a distribuição dos alunos do Curso de Ciências da Computação, matriculados nos dois últimos anos, por faixa etária.
+
+    \begin{graphic}[htb]
+        \caption{Pizza}
+        \label{grf:distidadematr}
+        \centering
+        \begin{tikzpicture}
+            \tiny
+            \pie[text=legend, color = {cl01,cl02,cl03,cl04}, radius=2]
+                {38.62/16 a 20, 39.77/21 a 25, 14.99/26 a 30, 6.62/mais de 30}
+        \end{tikzpicture}
+        \fonte{Autoria própria}
+    \end{graphic}
+
+    O \cref{grf:funcoes} a seguir traz exemplos de plotagem de funções.
+
+    \begin{graphic}[!htb]
+        \caption{Funções}
+        \label{grf:funcoes}
+        \centering
+        \begin{tikzpicture}
+            \tiny
+            \begin{axis}[
+                axis y line = center,
+                axis x line = middle,
+                width = 10cm,
+    %           height = 6cm,
+                xlabel = $x$,
+                ylabel = {$f(x)$},
+                legend style={legend pos=outer north east, column sep=1ex}
+            ]
+    
+                \addplot [domain =-20:20, samples=100, color=red ]{x^2 - 9};
+                \addlegendentry {$f(x) = x^2 - 9$}
+    
+                \addplot [domain =-20:20, samples=100, color=blue]{x + 2};
+                \addlegendentry {$g(x) = x + 2$}
+            \end{axis}
+        \end{tikzpicture}
+        \fonte{Autoria própria}
+    \end{graphic}
+
+    \FloatBarrier
+
+    O \cref{grf:fxetariaanual} traz uma representação em linhas da distribuição dos alunos matriculados, por ano e faixa etária, no Curso de Ciências da Computação.
+
+    \begin{graphic}[!htb]
+        \caption{Linhas}
+        \label{grf:fxetariaanual}
+        \centering
+        \tiny
+        \begin{tikzpicture}
+            \begin{axis}[
+                title = {Distribuição dos Alunos por Faixa Etária Anual},
+                xlabel = {Anos},
+                ylabel = {Qtd. de Alunos},
+                font = \footnotesize,
+                width = 0.6\textwidth,
+                height = 6cm,
+                ymajorgrids = true,
+                grid style={dotted},
+                x tick label style={/pgf/number format/1000 sep=},
+                xtick = data,
+                ytick = {0,40,80,...,200},
+                ymin = 0,
+                ymax = 200,
+                enlarge x limits = 0.25,
+                legend cell align = left,
+                legend style={legend pos=outer north east, column sep=1ex}
+            ]
+                \addplot[mark=square*,line width=2pt,style={cl01}] coordinates {(2011,56) (2012,77) (2013,102) (2014,134)};
+                \addlegendentry{16 a 20}
+    
+                \addplot[mark=o,line width=2pt,style={cl02}] coordinates {(2011,170) (2012,151) (2013,142) (2014,138)};
+                \addlegendentry{21 a 25}
+    
+                \addplot[mark=triangle*,line width=2pt,style={cl03}] coordinates {(2011,73) (2012,66) (2013,55) (2014,52)};
+                \addlegendentry{26 a 30}
+    
+                \addplot[mark=halfsquare*,line width=2pt,style={cl04}] coordinates {(2011,37) (2012,30) (2013,28) (2014,23)};
+                \addlegendentry{Acima de 30}
+            \end{axis}
+        \end{tikzpicture}
+        \fonte{Autoria própria}
+    \end{graphic}

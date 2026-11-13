@@ -1,0 +1,138 @@
+\chapter{Tabelas e Quadros}\label{chp:tabquad}
+
+    As tabelas e os quadros facilitam a compreensão do fenômeno em estudo, uma vez que apresentam os dados de modo resumido, oferecendo uma visão geral do assunto.
+
+    A principal diferença entre tabelas e quadros está relacionada ao conteúdo e à formatação. Segundo as Normas de Apresentação Tabular, a informação central de uma tabela é o dado numérico. Todos os outros elementos têm a função de complementá-la e explicá-la. Por sua vez, a Associação Brasileira de Normas Técnicas (ABNT), não específica o tipo de conteúdo a ser incluído em um quadro.
+
+    Com relação a formatação, a tabela apresenta os seguintes elementos: título, cabeçalho, conteúdo, fonte e, se necessário, nota explicativa (geral e/ou específica). É dividida por o mínimo possível de linhas na horizontal e as bordas  laterais não podem ser fechadas. Já o quadro, embora siga especificações semelhantes  (título, fonte, legenda, nota(s) e outras informações necessárias), terá suas laterais fechadas.
+
+    A seguir, temos um exemplo de tabela (\cref{tab:modelo}) e de quadro (\cref{brd:modelo}). A tabela poderia ter as linhas verticais e horizontais intermediárias. A diferença, para efeito de identificação no \LaTeX, é basicamente o tipo de ambiente (\emph{table} para tabela, e \emph{board} para quadro). A estrutura de ambos os elementos é definida com o ambiente \emph{tabular}.
+
+    \begin{table}[!htb]
+        \small
+        \centering
+        \caption{Modelo de Tabela}
+        \label{tab:modelo}
+        \begin{tabular}{lcccc}                                       \hline
+            ÁREAS                 & UNESP & UNICAMP & USP & Total \\ \hline
+            Interdisciplinar      &  2    &  2      & 2   &  6    \\ 
+            Biológicas e da Saúde &  2    &  2      & 2   &  6    \\ 
+            Exatas e Tecnológicas &  2    &  2      & 2   &  6    \\ 
+            Humanas e Artes       &  2    &  2      & 2   &  6    \\ \hline
+            TOTAL                 &  8    &  8      & 8   & 24    \\ \hline
+        \end{tabular}
+        \vspace{0.2cm}
+        \fonte{Elaborada pelo autor}
+    \end{table}
+
+    \begin{board}[!htb]
+        \centering
+        \caption{Modelo de Quadro}
+        \label{brd:modelo}
+        \begin{tabular}{|l|c|c|c|c|}                                 \hline
+            ÁREAS                 & UNESP & UNICAMP & USP & Total \\ \hline \hline
+            Interdisciplinar      &  2    &  2      & 2   &  6    \\ \hline
+            Biológicas e da Saúde &  2    &  2      & 2   &  6    \\ \hline
+            Exatas e Tecnológicas &  2    &  2      & 2   &  6    \\ \hline
+            Humanas e Artes       &  2    &  2      & 2   &  6    \\ \hline
+            TOTAL                 &  8    &  8      & 8   & 24    \\ \hline
+        \end{tabular}
+        \vspace{0.2cm}
+        \fonte{Elaborado pelo autor}
+    \end{board}
+
+    O \cref{brd:multicol} a seguir traz um exemplo de utilização de mesclagem de colunas (comando \emph{multicol}) e linhas (comando \emph{multirow}). Para utilizar os recursos \emph{multirow} e \emph{multicol}, é necessário incluir os pacotes com estes nomes no preâmbulo do arquivo principal (monografia.tex) ou no arquivo do template (uva.sty)
+
+    \begin{board}[!htb]
+        \small
+        \centering
+        \caption{Modelo de quadro com mesclagem de colunas e linhas}
+        \label{brd:multicol}
+        \begin{tabular}{|l|c|c|c|c|}                                                              \hline
+            \multirow{2}{*}{ÁREAS} & \multicolumn{3}{c|}{INSTITUIÇÃO} & \multirow{2}{*}{TOTAL} \\ \hhline{|~|-|-|-|~|}
+            ~                      & UNESP     & UNICAMP  & USP      & ~                       \\ \hline
+            Interdisciplinar       &  2        &  2       & 2        &  6                      \\
+            Biológicas e da Saúde  &  2        &  2       & 2        &  6                      \\
+            Exatas e Tecnológicas  &  2        &  2       & 2        &  6                      \\
+            Humanas e Artes        &  2        &  2       & 2        &  6                      \\ \hline
+            TOTAL                  &  8        &  8       & 8        & 24                      \\ \hline
+        \end{tabular}
+        \vspace{0.2cm}
+        \fonte{Elaborado pelo autor}
+    \end{board}
+
+    O \cref{brd:result} traz um exemplo com texto escrito na vertical. Para isso, é necessário incluir o pacote \emph{rotating}. O efeito pode também ser aplicado a tabelas.
+
+    \begin{board}[!htb]
+        \small
+        \centering
+        \caption{Estudos de Feedback Set em Grafos e Digrafos}
+        \label{brd:result}      
+        \begin{tabular}{|c|c|l|} \hline
+            \textbf{Tipo}                   & \textbf{Algoritmo}            & \textbf{Classe}                       \\ \hline
+            \multirow{7}{*}{\begin{sideways}
+                                Grafos
+                            \end{sideways}} & \multirow{4}{*}{Polinomial}   & Grafos cordais (FVS)                  \\ 
+                                            & ~                             & Grafos de intervalo (FVS)             \\ 
+                                            & ~                             & Grafos de grau no max 3 (FVS)         \\
+                                            & ~                             & Grafos em geral (FES)                 \\ \cline{2-3}
+                                            & \multirow{2}{*}{Aproximativo} & Grafos em geral (FVS)                 \\ 
+                                            & ~                             & (fator de aprox. 2)                   \\ \cline{2-3}  
+                                            & \multirow{1}{*}{Exato}        & Caso geral (FVS) - $O(1.734601^n)$    \\ \hline 
+            \multirow{4}{*}{\begin{sideways}
+                                Digrafos
+                            \end{sideways}}
+                                            & Polinomial                    & Digrafos planares (FAS)               \\ \cline{2-3}
+                                            & \multirow{2}{*}{Aproximativo} & Torneios bipartidos (FVS e FAS)       \\
+                                            & ~                             & (fator de aprox. 2)                   \\ \cline{2-3} 
+                                            & \multirow{1}{*}{Exato}        & Caso geral (DFVS) - $O^*(1.9977^n)$   \\ \hline
+        \end{tabular}
+        \vspace{0.2cm}
+        \fonte{Elaborado pelo autor}
+    \end{board}
+
+    O \cref{brd:cronograma} a seguir, traz um exemplo de cronograma a ser elaborado para o projeto. Nesse caso, deve-se construir um capítulo apenas para apresentar o cronograma de execução do projeto.
+
+    \begin{board}[!htb]
+        \small
+        \centering
+        \caption{Cronograma}
+        \label{brd:cronograma}
+        \newcommand{\x}{\cellcolor{gray!40}~}
+        \begin{tabular}{|l|c|c|c|c|c|}                                         \hline 
+          ETAPA                               & JUL & AGO & SET & OUT & NOV \\ \hline \hline
+          Elaboração do projeto               & \x  & \x  & ~   & ~   & ~   \\ \hline
+          Revisão bibliográfica inicial       & \x  & \x  & ~   & ~   & ~   \\ \hline
+          Estudo do problema e suas variações & ~   & \x  & \x  & ~   & ~   \\ \hline
+          Estudo dos algoritmos               & ~   & ~   & \x  & \x  & ~   \\ \hline
+          Finalização                         & ~   & ~   & ~   & \x  & ~   \\ \hline
+          Apresentação                        & ~   & ~   & ~   & ~   & \x  \\ \hline
+        \end{tabular}
+        \vspace{0.2cm}
+        \fonte{Elaborado pelo autor}
+    \end{board}
+
+    \newpage
+    O \cref{brd:qtdalunos} a seguir traz a quantidade de alunos por curso da Universidade.
+
+    \begin{board}[!htb]
+        \small
+        \centering
+        \caption{Quantidade de alunos por curso}
+        \label{brd:qtdalunos}
+        \begin{tabular}{|l|l|r|r|} \hline
+            \multirow{2}{*}{CENTRO} & \multirow{2}{*}{CURSO}                & \multicolumn{2}{c|}{ALUNOS} \\ \cline{3-4}
+                                    &                                       & QTD.        & \%            \\ \hline
+            \multirow{6}{*}{CCET}   & Ciências da Computação                & 300         &  10.00        \\ \cline{2-4}
+                                    & Engenharia Civil                      & 250         &   8.33        \\ \cline{2-4}
+                                    & Física                                & 400         &  13.33        \\ \cline{2-4}
+                                    & Matemática                            & 500         &  16.67        \\ \cline{2-4}
+                                    & Química                               & 500         &  16.67        \\ \cline{2-4}
+                                    & Tecnologia em Construção de Edifícios & 300         &  10.00        \\ \hline
+            \multirow{2}{*}{CCS}    & Educação Física                       & 350         &  11.67        \\ \cline{2-4}
+                                    & Enfermagem                            & 400         &  13.33        \\ \hline
+            \multicolumn{2}{|r|}{TOTAL}                                     & 3000        & 100.00        \\ \hline
+        \end{tabular}
+        \vspace{0.2cm}
+        \fonte{Autoria própria}
+    \end{board}

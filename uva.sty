@@ -1,0 +1,520 @@
+% =============================================================================
+% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) desenvolvidas para
+% auxiliar na criação de trabalhos acadêmicos da UVA
+% =============================================================================
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage[alf]{abntex2cite}
+\RequirePackage{hyperref} 
+\RequirePackage{graphicx}
+\RequirePackage{lastpage}
+\RequirePackage{tabularx}
+\RequirePackage{multicol}
+\RequirePackage{multirow}
+\RequirePackage{amsthm}
+\RequirePackage{amsmath}
+\RequirePackage{enumerate}
+\RequirePackage{caption}
+\RequirePackage[subrefformat=parens]{subcaption}
+\RequirePackage{indentfirst}
+\RequirePackage{makeidx}
+\RequirePackage{xcolor}
+\RequirePackage{colortbl}
+\RequirePackage{listings}
+\RequirePackage{hhline}
+\RequirePackage{pdfpages}
+\RequirePackage{placeins}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\RequirePackage{pgf-pie}
+\RequirePackage{lipsum}
+\RequirePackage{hhline}
+\RequirePackage{rotating}
+\RequirePackage[noabbrev, nameinlink]{cleveref}
+
+% Configurações do Pacote CleverRef
+\crefname{proposititon}{Proposição}{Proposições}
+\crefname{lemma}{Lema}{Lemas}
+\crefname{theorem}{Teorema}{Teoremas}
+\crefname{corollary}{Corolário}{Corolários}
+\crefname{conjecture}{Conjectura}{Conjecturas}
+\crefname{definition}{Definição}{Definições}
+\crefname{equation}{Equação}{Equações}
+\crefname{chapter}{Capítulo}{Capítulos}
+\crefname{section}{Seção}{Seções}
+\crefname{subseciton}{Subseção}{Subseções}
+\crefname{board}{Quadro}{Quadros}
+\crefname{table}{Tabela}{Tabelas}
+\crefname{figure}{Figura}{Figuras}
+\crefname{graphic}{Gráfico}{Gráficos}
+\crefname{algorithm}{Algoritmo}{Algoritmos}
+
+\newcommand{\crefpairconjunction}{~e~}
+    
+% Sugestão de cores para utilizar em gráficos
+\definecolor{cl00}{RGB}{  0,  0,  0}
+\definecolor{cl01}{RGB}{000,075,140} %azul
+\definecolor{cl02}{RGB}{255,100,000} %laranja
+\definecolor{cl03}{RGB}{255,225,035} %amarelo
+\definecolor{cl04}{RGB}{000,128,000} %verde
+\definecolor{cl05}{RGB}{180,000,000} %vermelho
+\definecolor{cl06}{RGB}{130,130,000} %oliva
+\definecolor{cl07}{RGB}{180,180,180} %cinza
+
+% ==================== A M B I E N T E S   D E   P R O V A ====================
+\newtheorem{proposition}{Proposição}[chapter]
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{lemma}{Lema}[chapter]
+\newtheorem{corollary}{Corolário}[chapter]
+\newtheorem{conjecture}{Conjectura}[chapter]
+\newtheorem{definition}{Definição}[chapter]
+
+% =========================== F O R M A T A Ç Õ E S ===========================
+\setlength{\parindent}{1.25cm}
+\setlength{\afterchapskip}{18pt}
+\setlength{\aftersecskip}{18pt}
+\setlength{\aftersubsecskip}{18pt}
+\setlength{\ABNTEXsignthickness}{0.5pt}
+\setlength{\ABNTEXsignskip}{0cm}
+
+% Fonte para ilustrações e quadros
+\renewcommand{\fonte}[1]{\par {\small Fonte: #1}}
+
+% Tamanho da fonte nos títulos do documento
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
+
+% Tipos de fonte nos títulos do documento
+\renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsectionfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont\itshape}
+
+% Tipos de fonte nos títulos do sumário
+\renewcommand{\cftchapterfont}{\ABNTEXchapterfont}
+\renewcommand{\cftsectionfont}{\ABNTEXsectionfont}
+\renewcommand{\cftsubsectionfont}{\ABNTEXsubsectionfont}
+\renewcommand{\cftsubsubsectionfont}{\ABNTEXsubsubsectionfont}
+\renewcommand{\cftparagraphfont}{\ABNTEXsubsubsubsectionfont}
+
+% Adicionar o nome Apêndice, e em maiúsculas, ao Sumário
+\renewcommand{\appendixtocname}{Apêndice}
+\renewcommand*\cftappendixname{\appendixname\enspace}
+%\renewcommand*{\cftchapteraftersnum}{--} % travessão depois da letra    
+
+\addto\captionsbrazil{%
+    \renewcommand{\appendixname}{APÊNDICE}
+    \renewcommand{\bibname}{REFERÊNCIAS}%
+}
+
+% Convertendo o nome da seção para maiúsculo  
+\makeatletter
+\let\oldcontentsline\contentsline
+\def\contentsline#1#2{%
+    \expandafter\ifx\csname l@#1\endcsname\l@section
+        \expandafter\@firstoftwo
+    \else
+        \expandafter\@secondoftwo
+    \fi{
+        \oldcontentsline{#1}{\MakeTextUppercase{#2}}%
+    }{%
+        \oldcontentsline{#1}{#2}%
+    }%
+}
+\makeatother
+
+\newcommand{\refanx}[1]{\hyperref[#1]{Anexo~\ref{#1}}}    % Referenciar Anexo
+\newcommand{\refapd}[1]{\hyperref[#1]{Apêndice~\ref{#1}}} % Referenciar Apêndice
+
+% ================== D A D O S   D A   I N S T I T U I C A O ==================
+\newcommand{\imprimircentro}{}
+\newcommand{\centro}[1]{\renewcommand{\imprimircentro}{#1}}
+
+\newcommand{\imprimircurso}{}
+\newcommand{\curso}[1]{\renewcommand{\imprimircurso}{#1}}
+
+\newcommand{\imprimirsubtitulo}{}
+\newcommand{\subtitulo}[1]{\renewcommand{\imprimirsubtitulo}{#1}}
+
+\newcommand{\imprimirgrau}{}
+\newcommand{\grau}[1]{\renewcommand{\imprimirgrau}{#1}}
+
+% ======================== D A D O S   D A   B A N C A ========================
+\newcommand{\imprimirbancaoNome}{}
+\newcommand{\imprimirbancaoInst}{}
+\newcommand{\bancao}[2]{
+    \renewcommand{\imprimirbancaoNome}{#1}
+    \renewcommand{\imprimirbancaoInst}{#2}
+}
+
+\newcommand{\imprimirbancaaNome}{}
+\newcommand{\imprimirbancaaInst}{}
+\newcommand{\bancaa}[2]{
+    \renewcommand{\imprimirbancaaNome}{#1}
+    \renewcommand{\imprimirbancaaInst}{#2}
+}
+
+\newcommand{\imprimirbancabNome}{}
+\newcommand{\imprimirbancabInst}{}
+\newcommand{\bancab}[2]{
+    \renewcommand{\imprimirbancabNome}{#1}
+    \renewcommand{\imprimirbancabInst}{#2}
+}
+
+\newcommand{\imprimirbancacNome}{}
+\newcommand{\imprimirbancacInst}{}
+\newcommand{\bancac}[2]{
+    \renewcommand{\imprimirbancacNome}{#1}
+    \renewcommand{\imprimirbancacInst}{#2}
+}
+
+\newcommand{\imprimircoordenador}{}
+\newcommand{\imprimircoordenadorRotulo}{}
+\newcommand{\coordenador}[2][Coordenador do Curso]{
+    \renewcommand{\imprimircoordenadorRotulo}{#1:}
+    \renewcommand{\imprimircoordenador}{#2}
+}
+
+\newcommand{\assinaturabanca}[3]{
+    #1 & ~ & ~                           \\ \cline{3-3}
+    ~  & ~ & \multicolumn{1}{c}{#2 (#3)} \vspace{1cm} \\
+}
+
+% ============================= P R E A M B U L O =============================
+\preambulo{
+    \imprimirtipotrabalho\ apresentada ao \imprimircurso\ da \imprimirinstituicao\ como requisito parcial para obtenção do título de \imprimirgrau.\
+}
+
+% ================================== C A P A ==================================
+\makeatletter
+\renewcommand{\imprimircapa}{
+    \setcounter{page}{0}
+
+    \begin{center}
+        \begin{OnehalfSpace}
+            \includegraphics[width=1.5cm]{figuras/brasao.png}
+
+            \MakeUppercase{\textbf{\imprimirinstituicao}}\par
+            \MakeUppercase{\textbf{\imprimircentro}}\par
+            \MakeUppercase{\textbf{\imprimircurso}}\par
+
+            \vspace{3.5cm}
+            \MakeUppercase{\textbf{\imprimirautor}}\par
+            \vspace{3.5cm}
+            \MakeUppercase{\textbf{\imprimirtitulo}}\abntex@ifnotempty{\imprimirsubtitulo}{\textbf{:}}\par
+            \abntex@ifnotempty{\imprimirsubtitulo}{\MakeUppercase{\textbf{\imprimirsubtitulo}}\par}
+
+            \vfill
+            \MakeUppercase{\textbf{\imprimirlocal \ - \imprimirdata}}
+            \cleardoublepage
+        \end{OnehalfSpace}
+    \end{center}
+}
+
+% ======================== C A P A   D O   P R O J E T O ========================
+\makeatletter
+\newcommand{\imprimircapaproj}{
+    \begin{center}
+        \begin{OnehalfSpace}
+            \includegraphics[width=1.5cm]{figuras/brasao.png}
+
+            \MakeUppercase{\textbf{\imprimirinstituicao}}\par
+            \MakeUppercase{\textbf{\imprimircentro}}\par
+            \MakeUppercase{\textbf{\imprimircurso}}\par
+            \vspace{2cm}
+            \MakeUppercase\imprimirautor\par
+            \vspace{2cm}
+            \MakeUppercase{\imprimirtitulo}\abntex@ifnotempty{\imprimirsubtitulo}{:}\par
+            \abntex@ifnotempty{\imprimirsubtitulo}{\MakeUppercase{\imprimirsubtitulo}\par}
+            \vspace{2cm}
+      
+            \abntex@ifnotempty{\imprimirpreambulo}{
+                \noindent\hspace{7.9cm}
+                \begin{minipage}{8.0cm}
+                    \begin{SingleSpace}
+                        Proposta de\imprimirpreambulo\par
+                        \vspace{1cm}
+                        \imprimirorientadorRotulo~\imprimirorientador\par
+                        \vspace{1cm}
+                        \abntex@ifnotempty{\imprimircoorientador}{\imprimircoorientadorRotulo~\imprimircoorientador}
+                    \end{SingleSpace}
+                \end{minipage}
+            }
+
+            \vfill
+            \MakeUppercase{\imprimirlocal \ - \imprimirdata}
+            \cleardoublepage
+        \end{OnehalfSpace}
+    \end{center}
+}
+\makeatother
+
+
+% ======================== F O L H A   D E   R O S T O ========================
+\makeatletter
+\renewcommand{\imprimirfolhaderosto}{
+    \begin{center}
+        \begin{OnehalfSpace}
+            \MakeUppercase\imprimirautor\par
+            \vspace{4cm}
+            \MakeUppercase{\imprimirtitulo}\abntex@ifnotempty{\imprimirsubtitulo}{:}\par
+            \abntex@ifnotempty{\imprimirsubtitulo}{\MakeUppercase{\imprimirsubtitulo}\par}
+
+            \vspace{5cm}
+      
+            \abntex@ifnotempty{\imprimirpreambulo}{
+                \noindent\hspace{8.0cm}
+                \begin{minipage}{7.9cm}
+                    \begin{SingleSpace}
+                        \imprimirpreambulo\par
+                        \vspace{1cm}
+                        \imprimirorientadorRotulo~\imprimirorientador\par
+                        \vspace{1cm}
+                        \abntex@ifnotempty{\imprimircoorientador}{\imprimircoorientadorRotulo~\imprimircoorientador}
+                    \end{SingleSpace}
+                \end{minipage}
+            }
+
+            \vfill
+            \MakeUppercase{\imprimirlocal \ - \imprimirdata}
+            \cleardoublepage
+        \end{OnehalfSpace}
+    \end{center}
+}
+\makeatother
+
+% ==================== F O L H A   D E   A P R O V A Ç Ã O ====================
+\makeatletter
+\newcommand{\imprimirfolhaaprov}{
+    \clearpage
+    \begin{center}
+        {\ABNTEXchapterfont\normalsize\MakeUppercase{\imprimirtitulo}\abntex@ifnotempty{\imprimirsubtitulo}{:}\par
+        \abntex@ifnotempty{\imprimirsubtitulo}{\MakeUppercase{\imprimirsubtitulo}\par}
+        }       
+        \vspace{1cm}
+    \end{center}
+
+    \noindent\ignorespaces\imprimirpreambulo
+    \vspace{1cm}
+    \assinatura{\imprimirautor}
+    \vspace{1.5cm}
+    \noindent Monografia aprovada em: $_{_{\rule{.5cm}{.2pt}}}~/_{_{\rule{.5cm}{.2pt}}}~/_{_{\rule{1cm}{.2pt}}}$
+    \vspace{1.5cm}
+
+    \begin{flushleft}
+        \newcommand{\ordm}{\textordmasculine}
+        \setlength\tabcolsep{0pt}
+        \begin{tabular}{lp{0.5cm}p{8cm}}
+            \assinaturabanca{\imprimirorientadorRotulo}{\imprimirbancaoNome}{\imprimirbancaoInst}
+            \assinaturabanca{1\ordm\ Examinador:}{\imprimirbancaaNome}{\imprimirbancaaInst}
+            \assinaturabanca{2\ordm\ Examinador:}{\imprimirbancabNome}{\imprimirbancabInst}
+            \abntex@ifnotempty{\imprimirbancacNome}{%      
+                \hspace{-1.3mm}\assinaturabanca{3\ordm\ Examinador:}{\imprimirbancacNome}{\imprimirbancacInst}
+            }
+        \end{tabular}
+        \setlength\tabcolsep{2pt}
+
+        \vspace{1.5cm}
+        \imprimircoordenadorRotulo
+        \assinatura{\imprimircoordenador}
+    \end{flushleft}
+
+    \cleardoublepage
+}
+\makeatother
+
+% ============================== E P I G R A F E ==============================
+\newcommand{\imprimirepigrafe}[2]{
+    \newpage
+    \vspace*{\fill}
+
+    \noindent\hspace{.49\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \begin{SingleSpace}
+            \emph{``#1''} \\
+            \hspace*{\fill} (#2)
+        \end{SingleSpace}
+    \end{minipage}
+    \cleardoublepage
+}
+
+% =========================== D E D I C A T O R I A ===========================
+\newcommand{\imprimirdedicatoria}[1]{
+    \newpage
+    \vspace*{\fill}
+
+    \noindent\hspace{.49\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \begin{SingleSpace}
+            #1
+        \end{SingleSpace}
+    \end{minipage}
+    \cleardoublepage
+}
+
+% ======================== A G R A D E C I M E N T O S ========================
+\newcommand{\imprimiragradecimentos}{
+    \include{capitulos/agradecimentos}
+}
+
+% ===================== R E S U M O   E   A B S T R A C T =====================
+\newcommand{\imprimirpca}{}
+\newcommand{\imprimirkwa}{}
+\newcommand{\pca}[2]{
+    \renewcommand{\imprimirpca}{#1}
+    \renewcommand{\imprimirkwa}{#2}
+}
+
+\newcommand{\imprimirpcb}{}
+\newcommand{\imprimirkwb}{}
+\newcommand{\pcb}[2]{%
+    \renewcommand{\imprimirpcb}{#1}
+    \renewcommand{\imprimirkwb}{#2}
+}
+
+\newcommand{\imprimirpcc}{}
+\newcommand{\imprimirkwc}{}
+\newcommand{\pcc}[2]{
+    \renewcommand{\imprimirpcc}{#1}
+    \renewcommand{\imprimirkwc}{#2}
+}
+
+\newcommand{\imprimirpcd}{}
+\newcommand{\imprimirkwd}{}
+\newcommand{\pcd}[2]{
+    \renewcommand{\imprimirpcd}{#1}
+    \renewcommand{\imprimirkwd}{#2}
+}
+
+\newcommand{\imprimirpce}{}
+\newcommand{\imprimirkwe}{}
+\newcommand{\pce}[2]{
+    \renewcommand{\imprimirpce}{#1}
+    \renewcommand{\imprimirkwe}{#2}
+}
+
+\newcommand{\imprimirpcf}{}
+\newcommand{\imprimirkwf}{}
+\newcommand{\pcf}[2]{
+    \renewcommand{\imprimirpcf}{#1}
+    \renewcommand{\imprimirkwf}{#2}
+}
+
+\makeatletter
+
+\newcommand{\imprimirresumolv}{
+    \begin{resumo}
+
+        \input{capitulos/resumolv}
+
+        \vspace*{18pt}
+
+        \noindent\textbf{Palavras-chave:}
+        \abntex@ifnotempty{\imprimirpca}{\imprimirpca .}
+        \abntex@ifnotempty{\imprimirpcb}{\imprimirpcb .}
+        \abntex@ifnotempty{\imprimirpcc}{\imprimirpcc .}
+        \abntex@ifnotempty{\imprimirpcd}{\imprimirpcd .}
+        \abntex@ifnotempty{\imprimirpce}{\imprimirpce .}
+        \abntex@ifnotempty{\imprimirpcf}{\imprimirpcf .}
+    \end{resumo}
+}
+
+\newcommand{\imprimirresumole}[3]{
+    \begin{resumo}[#2]
+        \begin{otherlanguage*}{#1}
+            \input{capitulos/resumole}
+        \end{otherlanguage*}  
+        \vspace*{18pt}
+
+        \noindent\textbf{#3:}
+        \abntex@ifnotempty{\imprimirkwa}{\imprimirkwa .}
+        \abntex@ifnotempty{\imprimirkwb}{\imprimirkwb .}
+        \abntex@ifnotempty{\imprimirkwc}{\imprimirkwc .}
+        \abntex@ifnotempty{\imprimirkwd}{\imprimirkwd .}
+        \abntex@ifnotempty{\imprimirkwe}{\imprimirkwe .}
+        \abntex@ifnotempty{\imprimirkwf}{\imprimirkwf .}
+    \end{resumo}
+}
+\makeatother
+
+% ============================== S U M A R I O ================================
+\newcommand{\imprimirsumario}{
+    \tableofcontents*
+    \cleardoublepage
+}
+
+% ===================== L I S T A   D E   Q U A D R O S =======================
+\newcommand{\boardname}{Quadro}
+\newcommand{\listofboardsname}{Lista de quadros}
+
+\newfloat[chapter]{board}{lob}{\boardname}
+\newlistof{listofboards}{lob}{\listofboardsname}
+\newlistentry{board}{lob}{0}
+
+% configurações para atender às regras da ABNT
+\counterwithout{board}{chapter}
+\renewcommand{\cftboardname}{\boardname\space} 
+\renewcommand*{\cftboardaftersnum}{\hfill--\hfill}
+
+% ==================== L I S T A   D E   G R A F I C O S ======================
+\newcommand{\graphicname}{Gráfico}
+\newcommand{\listofgraphicsname}{Lista de gráficos}
+
+\newfloat[chapter]{graphic}{loqr}{\graphicname}
+\newlistof{listofgraphics}{loqr}{\listofgraphicsname}
+\newlistentry{graphic}{loqr}{0}
+
+% configurações para atender às regras da ABNT
+\counterwithout{graphic}{chapter}
+\renewcommand{\cftgraphicname}{\graphicname\space} 
+\renewcommand*{\cftgraphicaftersnum}{\hfill--\hfill}
+
+% =============================== L I S T A S =================================
+\newcommand{\listadefiguras}{%
+    \listoffigures*  
+    \cleardoublepage
+}
+
+\newcommand{\listadetabelas}{%
+    \listoftables*   
+    \cleardoublepage
+}
+
+\newcommand{\listadequadros}{%
+    \pdfbookmark[0]{\listofboardsname}{lob}
+    \listofboards*  
+    \cleardoublepage
+}
+
+\newcommand{\listadegraficos}{%
+    \pdfbookmark[0]{\listofgraphicsname}{logr}
+    \listofgraphics* 
+    \cleardoublepage
+}
+
+\newcommand{\listadealgoritmos}{%
+    \listofalgorithms 
+    \cleardoublepage
+}
+
+\newcommand{\listadesimbolos}{
+    \begin{simbolos}
+        \input{capitulos/simbolos}
+    \end{simbolos}
+}
+
+\newcommand{\listadesiglas}{
+    \begin{siglas}
+        \input{capitulos/siglas}
+    \end{siglas}
+}
+
+% ===================== I N D I C E   R E M I S S I V O =======================
+\newcommand{\idxitem}[1]{#1\index{#1}}
+\newcommand{\idxsubitem}[2]{#1\index{#2!#1}}
